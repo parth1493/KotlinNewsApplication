@@ -7,6 +7,8 @@
         <variable
             name="children"
             type="com.parth.kotlinnewsapplication.data.entities.Children" />
+
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_margin="2dp"
@@ -26,7 +28,9 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:scaleType="fitXY"
                     android:id="@+id/picture"
+                    app:image="@{children.data}"
                     android:layout_width="186dp"
                     android:layout_height="175dp"
                     android:background="@drawable/ic_launcher_background"

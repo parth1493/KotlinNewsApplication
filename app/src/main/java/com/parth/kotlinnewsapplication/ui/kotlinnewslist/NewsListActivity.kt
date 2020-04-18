@@ -1,16 +1,11 @@
 package com.parth.kotlinnewsapplication.ui.kotlinnewslist
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.parth.kotlinnewsapplication.R
-import com.parth.kotlinnewsapplication.ui.baseactivity.BaseActivity
 import com.parth.kotlinnewsapplication.utils.Coroutines
 import kotlinx.android.synthetic.main.activity_news_list.*
 import org.kodein.di.KodeinAware
@@ -21,12 +16,13 @@ class NewsListActivity : AppCompatActivity(),KodeinAware {
     override val kodein by kodein()
     private val factory: NewsViewModelFactory by instance()
     private lateinit var viewModel: NewsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_list)
 
-         viewModel = ViewModelProvider(this, factory).get(NewsViewModel::class.java)
-
+        viewModel = ViewModelProvider(this, factory).get(NewsViewModel::class.java)
+        this.setTitle(R.string.news_activity_name)
         buildUI()
     }
 
@@ -35,7 +31,7 @@ class NewsListActivity : AppCompatActivity(),KodeinAware {
             recycler_view_news.also {
                 it.layoutManager = LinearLayoutManager(applicationContext)
                 it.setHasFixedSize(true)
-                it.adapter = NewsAdapter(news)
+                it.adapter = NewsAdapter(news,this)
             }
         })
     }

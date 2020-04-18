@@ -1,5 +1,6 @@
 package com.parth.kotlinnewsapplication.ui.kotlinnewslist
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.parth.kotlinnewsapplication.data.repositories.NewsRepository
 import com.parth.kotlinnewsapplication.utils.lazyDeferred

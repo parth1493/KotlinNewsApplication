@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KotlinNewsApplication</string>
+    <string name="news_activity_name">Kotlin News</string>
 </resources>
