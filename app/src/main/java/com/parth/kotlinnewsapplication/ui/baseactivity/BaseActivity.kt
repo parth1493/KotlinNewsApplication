@@ -2,10 +2,16 @@ package com.parth.kotlinnewsapplication.ui.baseactivity
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.parth.kotlinnewsapplication.databinding.ToolbarBinding
 import com.parth.kotlinnewsapplication.ui.listeners.ActionBarView
 
 abstract class BaseActivity : AppCompatActivity(),ActionBarView {
+
+    protected lateinit var baseViewModel: BaseViewModel
+
+    protected lateinit var toolbarBinding: ToolbarBinding
 
     protected abstract fun initializeViewModel()
     abstract fun observeViewModel()
@@ -20,25 +26,24 @@ abstract class BaseActivity : AppCompatActivity(),ActionBarView {
     }
 
     private fun initializeToolbar() {
-        TODO("Not yet implemented")
+        toolbarBinding = ToolbarBinding.inflate(layoutInflater)
+        toolbarBinding.txtToolbarTitle.text = ""
     }
 
-
     override fun setUpIconVisibility(visible: Boolean) {
-        TODO("Not yet implemented")
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(visible)
     }
 
     override fun setTitle(titleKey: String) {
-        TODO("Not yet implemented")
+        toolbarBinding.txtToolbarTitle.text = titleKey
     }
 
     override fun setSettingsIconVisibility(visibility: Boolean) {
-        TODO("Not yet implemented")
+        toolbarBinding.icToolbarSetting.visibility = if (visibility) View.VISIBLE else View.GONE
     }
 
     override fun setRefreshVisibility(visibility: Boolean) {
-        TODO("Not yet implemented")
+        toolbarBinding.icToolbarRefresh.visibility = if (visibility) View.VISIBLE else View.GONE
     }
-
-
 }

@@ -1,10 +1,12 @@
 package com.parth.kotlinnewsapplication
 
 import android.app.Application
+import com.parth.kotlinnewsapplication.data.error.mapper.ErrorMapper
 import com.parth.kotlinnewsapplication.data.network.MyApi
 import com.parth.kotlinnewsapplication.data.network.NetworkConnectionInterceptor
 import com.parth.kotlinnewsapplication.data.repositories.NewsRepository
 import com.parth.kotlinnewsapplication.ui.kotlinnewslist.NewsViewModelFactory
+import com.parth.kotlinnewsapplication.usecase.errors.ErrorManager
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -18,6 +20,8 @@ class MVVMApplication : Application(), KodeinAware {
     override val kodein = Kodein.lazy {
         import(androidXModule(this@MVVMApplication))
 
+        bind() from singleton { ErrorManager(instance()) }
+        bind() from singleton { ErrorMapper(instance()) }
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { MyApi(instance()) }
         bind() from singleton { NewsRepository(instance()) }
