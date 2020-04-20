@@ -31,7 +31,7 @@ class NewsListActivity : AppCompatActivity(),KodeinAware {
             recycler_view_news.also {
                 it.layoutManager = LinearLayoutManager(applicationContext)
                 it.setHasFixedSize(true)
-                it.adapter = NewsAdapter(news,this)
+//                it.adapter = NewsAdapter(news,this)
             }
         })
     }

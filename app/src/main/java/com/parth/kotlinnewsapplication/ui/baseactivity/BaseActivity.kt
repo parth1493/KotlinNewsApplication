@@ -1,34 +1,44 @@
 package com.parth.kotlinnewsapplication.ui.baseactivity
 
-import android.view.View
-import android.widget.FrameLayout
-import android.widget.ProgressBar
+import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.parth.kotlinnewsapplication.R
+import com.parth.kotlinnewsapplication.ui.listeners.ActionBarView
 
+abstract class BaseActivity : AppCompatActivity(),ActionBarView {
 
-abstract class BaseActivity : AppCompatActivity() {
+    protected abstract fun initializeViewModel()
+    abstract fun observeViewModel()
+    protected abstract fun initViewBinding()
 
-    var mProgressBar: ProgressBar? = null
-
-    override
-    fun setContentView(layoutResID: Int) {
-
-        val constraintLayout =
-                getLayoutInflater().inflate(R.layout.activity_base, null) as ConstraintLayout
-
-        val frameLayout = constraintLayout.findViewById<FrameLayout>(R.id.activity_content)
-
-        mProgressBar = constraintLayout.findViewById(R.id.progress_bar)
-
-        getLayoutInflater().inflate(layoutResID, frameLayout, true)
-
-        super.setContentView(constraintLayout)
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+        initViewBinding()
+        initializeToolbar()
+        initializeViewModel()
+        observeViewModel()
     }
 
-    fun showProgressBar(visible: Boolean) {
-    mProgressBar!!.visibility = if (visible) View.VISIBLE else View.INVISIBLE
+    private fun initializeToolbar() {
+        TODO("Not yet implemented")
     }
+
+
+    override fun setUpIconVisibility(visible: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setTitle(titleKey: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setSettingsIconVisibility(visibility: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun setRefreshVisibility(visibility: Boolean) {
+        TODO("Not yet implemented")
+    }
+
 
 }
