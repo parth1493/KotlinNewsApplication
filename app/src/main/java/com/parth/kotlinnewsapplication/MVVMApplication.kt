@@ -6,6 +6,8 @@ import com.parth.kotlinnewsapplication.data.network.MyApi
 import com.parth.kotlinnewsapplication.data.network.NetworkConnectionInterceptor
 import com.parth.kotlinnewsapplication.data.repositories.NewsRepository
 import com.parth.kotlinnewsapplication.ui.kotlinnewslist.NewsViewModelFactory
+import com.parth.kotlinnewsapplication.ui.splash.SplashViewModel
+import com.parth.kotlinnewsapplication.ui.splash.SplashViewModelFactory
 import com.parth.kotlinnewsapplication.usecase.errors.ErrorManager
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -21,11 +23,11 @@ class MVVMApplication : Application(), KodeinAware {
         import(androidXModule(this@MVVMApplication))
 
         bind() from singleton { ErrorManager(instance()) }
-        bind() from singleton { ErrorMapper(instance()) }
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { MyApi(instance()) }
         bind() from singleton { NewsRepository(instance()) }
         bind() from provider { NewsViewModelFactory(instance()) }
+        bind() from provider { SplashViewModelFactory(instance()) }
     }
 
 }

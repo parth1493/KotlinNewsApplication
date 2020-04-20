@@ -11,10 +11,13 @@ import kotlinx.android.synthetic.main.activity_news_list.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
+
 class NewsListActivity : AppCompatActivity(),KodeinAware {
 
     override val kodein by kodein()
+
     private val factory: NewsViewModelFactory by instance()
+
     private lateinit var viewModel: NewsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

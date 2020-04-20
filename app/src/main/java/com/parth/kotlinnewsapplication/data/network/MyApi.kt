@@ -1,6 +1,7 @@
 package com.parth.kotlinnewsapplication.data.network
 
 import com.parth.kotlinnewsapplication.data.network.responses.NewsResponse
+import com.parth.kotlinnewsapplication.utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -23,7 +24,7 @@ interface MyApi {
                 .build()
 
             return Retrofit.Builder()
-                .baseUrl("https://www.reddit.com/r/Kotlin/")
+                .baseUrl(Constants.BASE_URL)
                 .client(okkHttpclient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

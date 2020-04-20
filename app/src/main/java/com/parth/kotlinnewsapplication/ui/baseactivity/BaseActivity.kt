@@ -2,12 +2,17 @@ package com.parth.kotlinnewsapplication.ui.baseactivity
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.parth.kotlinnewsapplication.databinding.ToolbarBinding
 import com.parth.kotlinnewsapplication.ui.listeners.ActionBarView
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
 
-abstract class BaseActivity : AppCompatActivity(),ActionBarView {
+abstract class BaseActivity : AppCompatActivity(),ActionBarView , KodeinAware {
+
+    override val kodein by kodein()
 
     protected lateinit var baseViewModel: BaseViewModel
 
@@ -17,15 +22,17 @@ abstract class BaseActivity : AppCompatActivity(),ActionBarView {
     abstract fun observeViewModel()
     protected abstract fun initViewBinding()
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         initViewBinding()
         initializeToolbar()
         initializeViewModel()
         observeViewModel()
+        Log.i("Splash Activity","Parth2")
     }
 
     private fun initializeToolbar() {
+        Log.i("Splash Activity","Parth3")
         toolbarBinding = ToolbarBinding.inflate(layoutInflater)
         toolbarBinding.txtToolbarTitle.text = ""
     }
