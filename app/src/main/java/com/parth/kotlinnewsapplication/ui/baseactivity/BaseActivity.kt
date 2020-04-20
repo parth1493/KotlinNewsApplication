@@ -28,11 +28,9 @@ abstract class BaseActivity : AppCompatActivity(),ActionBarView , KodeinAware {
         initializeToolbar()
         initializeViewModel()
         observeViewModel()
-        Log.i("Splash Activity","Parth2")
     }
 
     private fun initializeToolbar() {
-        Log.i("Splash Activity","Parth3")
         toolbarBinding = ToolbarBinding.inflate(layoutInflater)
         toolbarBinding.txtToolbarTitle.text = ""
     }

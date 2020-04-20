@@ -15,6 +15,7 @@ import org.kodein.di.generic.instance
 
 class SplashActivity : BaseActivity(), KodeinAware {
 
+
     override val kodein by kodein()
 
     private val factory: SplashViewModelFactory by instance()
@@ -25,12 +26,10 @@ class SplashActivity : BaseActivity(), KodeinAware {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("Splash Activity","onCreate")
         navigateToMainScreen()
     }
 
     override fun initViewBinding() {
-        Log.i("Splash Activity","Parth")
         binding = ActivitySplashBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@null"
         android:scaleType="fitXY"
-        android:src="@drawable/news"
+        android:src="@mipmap/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
