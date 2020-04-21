@@ -2,7 +2,7 @@ package com.parth.kotlinnewsapplication.ui.baseactivity
 
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.ProgressBar
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.parth.kotlinnewsapplication.R
@@ -10,7 +10,7 @@ import com.parth.kotlinnewsapplication.R
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    var mProgressBar: ProgressBar? = null
+    var refreshImage: ImageView? = null
 
     override
     fun setContentView(layoutResID: Int) {
@@ -20,15 +20,14 @@ abstract class BaseActivity : AppCompatActivity() {
 
         val frameLayout = constraintLayout.findViewById<FrameLayout>(R.id.activity_content)
 
-        mProgressBar = constraintLayout.findViewById(R.id.progress_bar)
-
+        refreshImage = constraintLayout.findViewById(R.id.refresh_image)
         getLayoutInflater().inflate(layoutResID, frameLayout, true)
 
         super.setContentView(constraintLayout)
     }
 
-    fun showProgressBar(visible: Boolean) {
-    mProgressBar!!.visibility = if (visible) View.VISIBLE else View.INVISIBLE
+    fun showRefreshImage(visible: Boolean) {
+        refreshImage!!.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
 }
